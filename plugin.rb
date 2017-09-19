@@ -22,20 +22,17 @@ module ::WatchCategory
       CategoryUser.set_notification_level_for_category(user, CategoryUser.notification_levels[:watching], category.id) unless watched_categories.include?(category.id)  || user.staged
     end 
   end
+  
+  def self.mute_all(category_slug)
+    category = Category.find_by(slug: category_slug)
+    User.all.each do |user|
+      muted_categories = CategoryUser.lookup(user, :muted).pluck(:category_id)
+      CategoryUser.set_notification_level_for_category(user, CategoryUser.notification_levels[:muted], category.id) unless muted_categories.include?(category.id)  || user.staged
+    end 
+  end
 
   def self.watch_category!
-    WatchCategory.watch_by_group("confidential-employees-only", "EmployeesOnly")
-    WatchCategory.watch_by_group("facilities-us","Morrisville")
-    WatchCategory.watch_by_group("facilities-us","Seattle")
-    WatchCategory.watch_by_group("facilities-us","RemoteUS")
-    WatchCategory.watch_by_group("facilities-uk","London")
     
-    WatchCategory.watch_by_group("dev-notifications","Engineering")
-    WatchCategory.watch_by_group("ProdNotifications","Engineering")
-
-    WatchCategory.watch_all("company-announcements")
-    WatchCategory.watch_all("Corporate-Scheduled-Maintenance")
-    WatchCategory.watch_all("Corporate-System-Status")
   end
 end
 
