@@ -32,7 +32,7 @@ module ::WatchCategory
   end
 
   def self.watch_category!
-    WatchCategory.mute_all("jungmedizinerforum-kalender")
+    WatchCategory.mute_all("jungmedizinerforum-kalender-unbeantwortet")
   end
 end
 
