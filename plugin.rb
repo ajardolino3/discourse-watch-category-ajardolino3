@@ -31,14 +31,6 @@ module ::WatchCategory
     end 
   end
 
-  def self.watch_all(category_slug)
-    category = Category.find_by(slug: category_slug)
-    User.all.each do |user|
-      watched_categories = CategoryUser.lookup(user, :watching).pluck(:category_id)
-      CategoryUser.set_notification_level_for_category(user, CategoryUser.notification_levels[:watching], category.id) unless watched_categories.include?(category.id)  || user.staged
-    end 
-  end
-  
   def self.watch_category!
     WatchCategory.mute_all("jungmedizinerforum-kalender-unbeantwortet")
     WatchCategory.watch_all("jungmedizinerforum-kalender")
