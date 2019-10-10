@@ -58,7 +58,7 @@ module ::WatchCategory
 
   def self.watch_category!
     WatchCategory.mute_all("jungmedizinerforum-kalender-unbeantwortet")
-    WatchCategory.mute_recursive_by_group("english-only", "deutsch")
+    WatchCategory.mute_recursive_by_group("deutsch", "english-only")
     WatchCategory.watch_all("jungmedizinerforum-kalender")
     WatchCategory.watch_by_group("Case-Study-Discussion-Group","case-study-group")
   end
