@@ -1,7 +1,8 @@
-# name: Watch Category
-# about: Watches a category for all the users in a particular group
-# version: 1.0
-# authors: Jared Needell
+# name: discourse-watch-category-ajardolino3
+# about: Forked and customized for Acumatica Partner Hub
+# version: 0.1
+# authors: Arthur Ardolino
+# url: https://github.com/ajardolino3/discourse-watch-category-ajardolino3
 
 module ::WatchCategory
   def self.watch_by_group(category_slug, group_name)
